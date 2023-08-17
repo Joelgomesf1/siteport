@@ -7,6 +7,6 @@ function mudarModo (){
     html.classList.add("parte-branca") 
   }
   */
- html.classList.toggle('parte-branca') //essa funcao faz o que a funcao acima faz
+ html.classList.toggle("parte-branca") //essa funcao faz o que a funcao acima faz
 }
 

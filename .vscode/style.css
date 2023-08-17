@@ -8,7 +8,7 @@
 :root {
   --cor-do-texto: white; /*definindo uma variavel */
   --bg-url: url(./assets/bg-mobile.jpg);
-  --cor-back: rgba(255, 255, 255, 0.1);
+  --cor-fundo: rgba(255, 255, 255, 0.1);
   --cor-borda: rgba(255, 255, 255, 0.5);
   --cor-hover: rgba(255, 255, 255, 0.02);
   --sociallink-hover: rgba(255, 255, 255, 0.2);
@@ -17,8 +17,8 @@
 .parte-branca {
   --cor-do-texto: black; /*mudando a variável*/
   --bg-url: url(./assets/bg-mobile-light.jpg);
-  --cor-back: rgba(0, 0, 0, 0.01);
-  --cor-borda: rgba(0, 0, 0, 0.5);
+  --cor-fundo: rgba(0, 0, 0, 0.15);
+  --cor-borda: rgba(0, 0, 0, 0.05);
   --cor-hover: rgba(0, 0, 0, 0.02);
   --sociallink-hover: rgba(0, 0, 0, 0.1);
   --botao-url: url(./assets/sun.svg);
@@ -33,14 +33,13 @@ body {
   para o cover abaixo precisa de uma /
   background: url(./assets/bg-mobile.jpg) 
   */
-  background: var(--bg-url) top center/cover;
-   height: 100vh; /*tamanho 100% da viewport(ponto de vista do usuario*/
+  background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh; /*tamanho 100% da viewport(ponto de vista do usuario*/
 }
 body * {
   font-family: "Inter", sans-serif;
   /*color: #ffffffff; */
   color: var(--cor-do-texto);
- 
 }
 
 #conteiner {
@@ -49,7 +48,8 @@ body * {
   border: 1px solid red;
   margin: auto; /*aqui ele da margin na direita e esquerda pois tem uma regra no css que n aplica margin no eixo y 
   padding-top: 56px; */
-  margin: 40px auto 0px;
+  max-width: 588px;
+  margin: 56px auto 0px;
   padding: 0 24px;
 }
 /* Perfil */
@@ -59,8 +59,8 @@ body * {
 }
 
 #perfil img {
-  width: 112px;
-  border-radius: 60px;
+  width: 150px;
+  border-radius: 80px;
   /*height: no css não precisa de altura pq normalmente ele segue a altura do objeto
   display: block; vai pegar toda a largura disponivel forcando o elemento ao lado ficar debaixo
   display: none; vai fazer desaparecer
@@ -69,7 +69,11 @@ body * {
 #perfil p {
   font-weight: 500; /* deixa a fonte em negrito */
   line-height: 24px;
-  margin: 16px;
+  margin-top: 8px;
+}
+#logo-whatsapp {
+  width: 23px;
+  height: 23px;
 }
 /* Botao */
 #botao {
@@ -83,23 +87,37 @@ body * {
   background: white var(--botao-url) no-repeat center;
   border: 0;
   border-radius: 50%;
-  left: 0; /*alinhando para a esquerda */
+  
   position: absolute; /*quando coloca em absoluto deixa ele sobre camadas*/
+  top: 50%; /*aqui alinha o botão com o atributo que foi colocado acima deixando ele no meio */
+  left: 0; /*alinhando para a esquerda */
   z-index: 1; /*informa em que camada ele está */
   transform: translateY(
     -50%
   ); /*aqui vai alinhar a imagem pois vai deixar o butão -50% alinhado na vertical*/
-  top: 50%; /*aqui alinha o botão com o atributo que foi colocado acima deixando ele no meio */
+  
+  animation: mudanca-fundo-preto 0.3s;
+}
+
+#botao button:hover {
+  outline: 8px solid var(--cor-borda);
 }
 .parte-branca #botao button {
-  right: 0; /*deixando o botao na direita na parte branca*/
-  left: initial; /*aqui ele volta pra sua maneira inicial*/
+  /*right: 0; /*deixando o botao na direita na parte branca*/
+  /*left: initial; /*aqui ele volta pra sua maneira inicial*/
+  animation: mudanca-fundo-branco 0.3s forwards; /* animation precisa de dois valores, a animacao que a gente fez e o tempo, forwards é para manter as propriedades final */
+
 }
+.parte-branca #botao button:hover {
+  outline: 8px solid var(--cor-hover);
+}
+
+
 #botao span {
   display: block;
   width: 64px;
   height: 24px;
-  background: var(--cor-back);
+  background: var(--cor-fundo);
   border: 1px solid var(--cor-borda);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -120,7 +138,7 @@ ul li a {
   align-items: center; /* alinha os itens no centro na vertical */
   padding: 16px 24px;
 
-  background: var(--cor-back);
+  background: var(--cor-fundo);
   border: 1px solid var(--cor-borda);
 
   /* background: rgba(    255,    255,    255,    0.1  ); /* red, greem, blue onde 0 cor mais escura e 255 é cor mais forte da quela cor e a ultima é a transparencia(alpah) */
@@ -181,5 +199,25 @@ footer {
   }
   .parte-branca {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+/*animacoes*/
+@keyframes mudanca-fundo-branco {
+  /*criando uma animacao para mudança de bg*/
+  from {
+    left: 0; /*começa do left 0*/
+  }
+  to {
+    left: 50%; /*terminina no left 50*/
+  }
+}
+
+@keyframes mudanca-fundo-preto {
+  /*criando uma animacao para mudança de bg*/
+  from {
+    left: 50%; /*começa do left 50*/
+  }
+  to {
+    left: 0; /*terminina no left 0*/
   }
 }
