@@ -34,11 +34,13 @@ body {
   background: url(./assets/bg-mobile.jpg) 
   */
   background: var(--bg-url) top center/cover;
+   height: 100vh; /*tamanho 100% da viewport(ponto de vista do usuario*/
 }
 body * {
   font-family: "Inter", sans-serif;
   /*color: #ffffffff; */
   color: var(--cor-do-texto);
+ 
 }
 
 #conteiner {
@@ -88,12 +90,10 @@ body * {
     -50%
   ); /*aqui vai alinhar a imagem pois vai deixar o butão -50% alinhado na vertical*/
   top: 50%; /*aqui alinha o botão com o atributo que foi colocado acima deixando ele no meio */
-  
 }
 .parte-branca #botao button {
   right: 0; /*deixando o botao na direita na parte branca*/
   left: initial; /*aqui ele volta pra sua maneira inicial*/
-  
 }
 #botao span {
   display: block;
@@ -170,4 +170,16 @@ ul li a:hover {
 footer {
   text-align: center;
   font-size: 14px;
+}
+
+/* MEDIA QUERIES */
+/*sao regras que vamos colocar no css*/
+@media (min-width: 700px) {
+  /*de 700 px pra cima faca as regras abaixo*/
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg); /* mudando o bg */
+  }
+  .parte-branca {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
 }
