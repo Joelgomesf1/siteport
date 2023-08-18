@@ -190,6 +190,36 @@ footer {
   font-size: 14px;
 }
 
+#linguagens {
+  padding: 30px; /*em cima em baixo 24 do lado 0 */
+  display: flex;
+  font-size: 60px; /*tamnaho dos icones*/
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+/*meu teste tamanho (deu certo) 
+#social-links ion-icon {
+  height: 40px;
+  width: 40px;
+}
+*/
+#linguagens a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+#linguagens a:hover {
+  /*background: rgba(255, 255, 255, 0.05); */
+  background: var(--sociallink-hover);
+}
+
+
+
+
 /* MEDIA QUERIES */
 /*sao regras que vamos colocar no css*/
 @media (min-width: 700px) {
